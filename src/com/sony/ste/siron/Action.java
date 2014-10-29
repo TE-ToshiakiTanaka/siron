@@ -3,6 +3,9 @@ package com.sony.ste.siron;
 import static com.sony.ste.siron.debug.SetDebugRunnable.DEBUG_ON;
 import static com.sony.ste.siron.wifi.EnableWifiRunnable.WIFI_ON;
 import static com.sony.ste.siron.wifi.DisableWifiRunnable.WIFI_OFF;
+import static com.sony.ste.siron.settings.EnableAutoRotateRunnable.AUTO_ROTATE_ON;
+import static com.sony.ste.siron.settings.DisableAutoRotateRunnable.AUTO_ROTATE_OFF;
+import static com.sony.ste.siron.settings.SetScreenTimeoutRunnable.SET_SCREEN_TIMEOUT;
 import static com.sony.ste.siron.generic.ExecuteTasksFinishedNotificationRunnable.MSG_EXECUTE_TASKS_DONE;
 
 public enum Action {
@@ -10,7 +13,11 @@ public enum Action {
 
     SET_WIFI_ON_ACTION(WIFI_ON),
     SET_WIFI_OFF_ACTION(WIFI_OFF),
+    SET_AUTO_ROTATE_ON_ACTION(AUTO_ROTATE_ON),
+    SET_AUTO_ROTATE_OFF_ACTION(AUTO_ROTATE_OFF),
+    SET_SCREEN_TIMOUT_ACTION(SET_SCREEN_TIMEOUT),
     SET_DEBUG_ON_ACTION(DEBUG_ON),
+
 
     UNKNOWN("unknown");
 

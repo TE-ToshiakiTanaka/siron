@@ -18,8 +18,6 @@ public class SironService extends Service {
     private static final String TAG = SironService.class.getSimpleName();
     public static final int PACKAGE_NAME_LEN = 19;
 
-    public static final String EXECUTE_TASKS = "com.sony.ste.siron.EXECUTE_TASKS";
-    public static final String CLEAR_TASKS = "com.sony.ste.siron.CLEAR_TASKS";
     public static final String EXECUTE_TASKS_DONE = "com.sony.ste.siron.EXECUTE_TASKS_DONE";
     public static final String KEY_WAIT_TIME = "wait_time";
     public static final String KEY_ACTION_RESULT = "action-result";
@@ -50,19 +48,15 @@ public class SironService extends Service {
             String action = intent.getAction();
             String command = action.substring(PACKAGE_NAME_LEN);
             Log.d(APP_TAG, TAG + " " + action + ":" + command);
-            if (action.equals(EXECUTE_TASKS)) {
-                Log.d(APP_TAG, "Receive a request to run command " + command);
+            Log.d(APP_TAG, "Receive a request to run command " + action.substring(PACKAGE_NAME_LEN));
+            Runnable runner = mRunnableFactory.build(intent);
+            if (runner != null) {
+                mRunnableTaskExecutor.submitTask(runner);
                 ExecuteTasksFinishedNotificationRunnable executeTasks = new ExecuteTasksFinishedNotificationRunnable(startId);
                 mRunnableTaskExecutor.submitTask(new LogRunnable(executeTasks, "TASK_FINISHED_NOTIFIER"));
                 mRunnableTaskExecutor.execute();
             } else {
-                Log.d(APP_TAG, "Receive a request to run command " + action.substring(PACKAGE_NAME_LEN));
-                Runnable runner = mRunnableFactory.build(intent);
-                if (runner != null) {
-                    mRunnableTaskExecutor.submitTask(runner);
-                } else {
-                    Log.w(APP_TAG, TAG + " onStartCommand(), Unknown intent, thrown away!");
-                }
+                Log.w(APP_TAG, TAG + " onStartCommand(), Unknown intent, thrown away!");
             }
         }
         return startMode;
@@ -70,7 +64,9 @@ public class SironService extends Service {
 
     @Override
     public void onDestroy() {
-        Log.d(APP_TAG, TAG + " onDestroy()");
+        if (Debug.isDevelopmentEnabled()) {
+            Log.d(APP_TAG, TAG + " onDestroy()");
+        }
         mRunnableTaskExecutor.shutdown();
         super.onDestroy();
     }
