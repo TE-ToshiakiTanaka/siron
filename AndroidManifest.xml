@@ -7,11 +7,13 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
     
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STRAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.MANAGE_CA_CERTIFICATES"/>
     
     <application
         android:allowBackup="true"
@@ -26,6 +28,13 @@
                 <action android:name="com.sony.ste.siron.AUTO_ROTATE_OFF" />
                 <action android:name="com.sony.ste.siron.SET_SCREEN_TIMEOUT" />
                 <action android:name="com.sony.ste.siron.DEBUG_ON" />
+                <action android:name="com.sony.ste.siron.WIFI_CONNECT_OPEN" />
+				<action android:name="com.sony.ste.siron.WIFI_CONNECT_WEP" />
+				<action android:name="com.sony.ste.siron.WIFI_CONNECT_PERSONAL" />
+				<action android:name="com.sony.ste.siron.WIFI_CONNECT_ENTERPRISE_EAP_TLS" />
+				<action android:name="com.sony.ste.siron.WIFI_CONNECT_ENTERPRISE_EAP_PEAP" />
+				<action android:name="com.sony.ste.siron.WIFI_CONNECT_ENTERPRISE_EAP_TTLS" />
+				<action android:name="com.sony.ste.siron.WIFI_DISCONNECT" />
             </intent-filter>
         </service>
     </application>

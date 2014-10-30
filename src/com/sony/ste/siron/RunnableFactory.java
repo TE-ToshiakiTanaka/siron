@@ -3,6 +3,8 @@ package com.sony.ste.siron;
 import com.sony.ste.siron.debug.SetDebugRunnable;
 import com.sony.ste.siron.wifi.DisableWifiRunnable;
 import com.sony.ste.siron.wifi.EnableWifiRunnable;
+import com.sony.ste.siron.wifi.WifiConnectRunnable;
+import com.sony.ste.siron.wifi.WifiDisConnectRunnable;
 import com.sony.ste.siron.settings.DisableAutoRotateRunnable;
 import com.sony.ste.siron.settings.EnableAutoRotateRunnable;
 import com.sony.ste.siron.settings.SetScreenTimeoutRunnable;
@@ -11,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -62,13 +63,23 @@ public class RunnableFactory implements IRunnableFactory {
                     String val = intent.getStringExtra(SetScreenTimeoutRunnable.KEY_SCREEN_TIMEOUT);
                     int timeout = SetScreenTimeoutRunnable.DEFAULT_SCREEN_TIMEOUT_TIME;
                     if(this.isInt(val)) timeout = Integer.parseInt(val);
-                    Log.d("Siron", "Timeout : " + timeout);
                     SetScreenTimeoutRunnable setScreenTimeout = new SetScreenTimeoutRunnable(
                             timeout, mContext.getContentResolver(), intent, actionId);
                     return new LogRunnable(setScreenTimeout, command);
                 case SET_DEBUG_ON_ACTION:
                     SetDebugRunnable setDebug = new SetDebugRunnable(intent, actionId);
                     return new LogRunnable(setDebug, command);
+                case DO_WIFI_CONNECT_OPEN:
+                case DO_WIFI_CONNECT_WEP:
+                case DO_WIFI_CONNECT_PERSONAL:
+                case DO_WIFI_CONNECT_ENTERPRISE_EAP_TLS:
+                case DO_WIFI_CONNECT_ENTERPRISE_EAP_PEAP:
+                case DO_WIFI_CONNECT_ENTERPRISE_EAP_TTLS:
+                	WifiConnectRunnable wifiConnect = new WifiConnectRunnable(mContext, intent, actionId);
+                	return new LogRunnable(wifiConnect, command);
+                case DO_WIFI_DISCONNECT:
+                	WifiDisConnectRunnable wifiDisConnect = new WifiDisConnectRunnable(mContext, intent, actionId);
+                	return new LogRunnable(wifiDisConnect, command);
                 default:
             }
         }
