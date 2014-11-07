@@ -9,10 +9,13 @@ import static com.sony.ste.siron.wifi.WifiConnectRunnable.WIFI_CONNECT_PERSONAL;
 import static com.sony.ste.siron.wifi.WifiConnectRunnable.WIFI_CONNECT_ENTERPRISE_EAP_TLS;
 import static com.sony.ste.siron.wifi.WifiConnectRunnable.WIFI_CONNECT_ENTERPRISE_EAP_PEAP;
 import static com.sony.ste.siron.wifi.WifiConnectRunnable.WIFI_CONNECT_ENTERPRISE_EAP_TTLS;
+import static com.sony.ste.siron.wifi.WifiWPSConnectRunnable.WIFI_CONNECT_WPS;
 import static com.sony.ste.siron.wifi.WifiDisConnectRunnable.WIFI_DISCONNECT;
 import static com.sony.ste.siron.settings.EnableAutoRotateRunnable.AUTO_ROTATE_ON;
 import static com.sony.ste.siron.settings.DisableAutoRotateRunnable.AUTO_ROTATE_OFF;
 import static com.sony.ste.siron.settings.SetScreenTimeoutRunnable.SET_SCREEN_TIMEOUT;
+import static com.sony.ste.siron.settings.EnableFlightModeRunnable.FLIGHTMODE_ON;
+import static com.sony.ste.siron.settings.DisableFlightModeRunnable.FLIGHTMODE_OFF;
 import static com.sony.ste.siron.generic.ExecuteTasksFinishedNotificationRunnable.MSG_EXECUTE_TASKS_DONE;
 
 public enum Action {
@@ -22,6 +25,8 @@ public enum Action {
     SET_WIFI_OFF_ACTION(WIFI_OFF),
     SET_AUTO_ROTATE_ON_ACTION(AUTO_ROTATE_ON),
     SET_AUTO_ROTATE_OFF_ACTION(AUTO_ROTATE_OFF),
+    SET_FLIGHTMODE_ON_ACTION(FLIGHTMODE_ON),
+    SET_FLIGHTMODE_OFF_ACTION(FLIGHTMODE_OFF),
     SET_SCREEN_TIMOUT_ACTION(SET_SCREEN_TIMEOUT),
     SET_DEBUG_ON_ACTION(DEBUG_ON),
     DO_WIFI_CONNECT_OPEN(WIFI_CONNECT_OPEN),
@@ -30,6 +35,7 @@ public enum Action {
     DO_WIFI_CONNECT_ENTERPRISE_EAP_TLS(WIFI_CONNECT_ENTERPRISE_EAP_TLS),
     DO_WIFI_CONNECT_ENTERPRISE_EAP_PEAP(WIFI_CONNECT_ENTERPRISE_EAP_PEAP),
     DO_WIFI_CONNECT_ENTERPRISE_EAP_TTLS(WIFI_CONNECT_ENTERPRISE_EAP_TTLS),
+    DO_WIFI_CONNECT_WPS(WIFI_CONNECT_WPS),
     DO_WIFI_DISCONNECT(WIFI_DISCONNECT),
 
     UNKNOWN("unknown");

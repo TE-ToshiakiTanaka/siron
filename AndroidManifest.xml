@@ -14,6 +14,17 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.MANAGE_CA_CERTIFICATES"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="com.sonyericsson.permission.SETTINGS" />
+    <uses-permission android:name="com.android.email.permission.ACCESS_PROVIDER" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.MOUNT_FORMAT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="com.sonyericsson.usbux.permission.UI_INTENTS" />
     
     <application
         android:allowBackup="true"
@@ -26,7 +37,7 @@
                 <action android:name="com.sony.ste.siron.WIFI_OFF" />
                 <action android:name="com.sony.ste.siron.AUTO_ROTATE_ON" />
                 <action android:name="com.sony.ste.siron.AUTO_ROTATE_OFF" />
-                <action android:name="com.sony.ste.siron.SET_SCREEN_TIMEOUT" />
+				<action android:name="com.sony.ste.siron.SET_SCREEN_TIMEOUT" />
                 <action android:name="com.sony.ste.siron.DEBUG_ON" />
                 <action android:name="com.sony.ste.siron.WIFI_CONNECT_OPEN" />
 				<action android:name="com.sony.ste.siron.WIFI_CONNECT_WEP" />
@@ -34,9 +45,19 @@
 				<action android:name="com.sony.ste.siron.WIFI_CONNECT_ENTERPRISE_EAP_TLS" />
 				<action android:name="com.sony.ste.siron.WIFI_CONNECT_ENTERPRISE_EAP_PEAP" />
 				<action android:name="com.sony.ste.siron.WIFI_CONNECT_ENTERPRISE_EAP_TTLS" />
+				<action android:name="com.sony.ste.siron.WIFI_CONNECT_WPS" />
 				<action android:name="com.sony.ste.siron.WIFI_DISCONNECT" />
             </intent-filter>
         </service>
+        <activity
+            android:name=".wifi.WifiWPSConnectActivity"
+            android:label="@string/app_name" 
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <!--intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter-->
+        </activity>
     </application>
 
 </manifest>

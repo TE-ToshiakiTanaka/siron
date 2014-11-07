@@ -5,8 +5,11 @@ import com.sony.ste.siron.wifi.DisableWifiRunnable;
 import com.sony.ste.siron.wifi.EnableWifiRunnable;
 import com.sony.ste.siron.wifi.WifiConnectRunnable;
 import com.sony.ste.siron.wifi.WifiDisConnectRunnable;
+import com.sony.ste.siron.wifi.WifiWPSConnectRunnable;
 import com.sony.ste.siron.settings.DisableAutoRotateRunnable;
+import com.sony.ste.siron.settings.DisableFlightModeRunnable;
 import com.sony.ste.siron.settings.EnableAutoRotateRunnable;
+import com.sony.ste.siron.settings.EnableFlightModeRunnable;
 import com.sony.ste.siron.settings.SetScreenTimeoutRunnable;
 
 import android.content.Context;
@@ -59,6 +62,12 @@ public class RunnableFactory implements IRunnableFactory {
                 case SET_AUTO_ROTATE_OFF_ACTION:
                     DisableAutoRotateRunnable rotateDisable = new DisableAutoRotateRunnable(mContext, intent, actionId);
                     return new LogRunnable(rotateDisable, command);
+                case SET_FLIGHTMODE_ON_ACTION:
+                    EnableFlightModeRunnable flightmodeEnable = new EnableFlightModeRunnable(mContext, intent, actionId);
+                    return new LogRunnable(flightmodeEnable, command);
+                case SET_FLIGHTMODE_OFF_ACTION:
+                    DisableFlightModeRunnable flightmodeDisable = new DisableFlightModeRunnable(mContext, intent, actionId);
+                    return new LogRunnable(flightmodeDisable, command);
                 case SET_SCREEN_TIMOUT_ACTION:
                     String val = intent.getStringExtra(SetScreenTimeoutRunnable.KEY_SCREEN_TIMEOUT);
                     int timeout = SetScreenTimeoutRunnable.DEFAULT_SCREEN_TIMEOUT_TIME;
@@ -77,6 +86,9 @@ public class RunnableFactory implements IRunnableFactory {
                 case DO_WIFI_CONNECT_ENTERPRISE_EAP_TTLS:
                 	WifiConnectRunnable wifiConnect = new WifiConnectRunnable(mContext, intent, actionId);
                 	return new LogRunnable(wifiConnect, command);
+                case DO_WIFI_CONNECT_WPS:
+                	WifiWPSConnectRunnable wifiwps = new WifiWPSConnectRunnable(mContext, intent, actionId);
+                	return new LogRunnable(wifiwps, command);
                 case DO_WIFI_DISCONNECT:
                 	WifiDisConnectRunnable wifiDisConnect = new WifiDisConnectRunnable(mContext, intent, actionId);
                 	return new LogRunnable(wifiDisConnect, command);
