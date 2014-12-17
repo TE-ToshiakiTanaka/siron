@@ -16,6 +16,8 @@ import static com.sony.ste.siron.settings.DisableAutoRotateRunnable.AUTO_ROTATE_
 import static com.sony.ste.siron.settings.SetScreenTimeoutRunnable.SET_SCREEN_TIMEOUT;
 import static com.sony.ste.siron.settings.EnableFlightModeRunnable.FLIGHTMODE_ON;
 import static com.sony.ste.siron.settings.DisableFlightModeRunnable.FLIGHTMODE_OFF;
+import static com.sony.ste.siron.settings.EnablePCCRunnable.PC_COMPANION_ENABLE;
+import static com.sony.ste.siron.settings.DisablePCCRunnable.PC_COMPANION_DISABLE;
 import static com.sony.ste.siron.generic.ExecuteTasksFinishedNotificationRunnable.MSG_EXECUTE_TASKS_DONE;
 
 public enum Action {
@@ -28,6 +30,8 @@ public enum Action {
     SET_FLIGHTMODE_ON_ACTION(FLIGHTMODE_ON),
     SET_FLIGHTMODE_OFF_ACTION(FLIGHTMODE_OFF),
     SET_SCREEN_TIMOUT_ACTION(SET_SCREEN_TIMEOUT),
+    SET_PC_COMPANION_ON_ACTION(PC_COMPANION_ENABLE),
+    SET_PC_COMPANION_OFF_ACTION(PC_COMPANION_DISABLE),
     SET_DEBUG_ON_ACTION(DEBUG_ON),
     DO_WIFI_CONNECT_OPEN(WIFI_CONNECT_OPEN),
     DO_WIFI_CONNECT_WEP(WIFI_CONNECT_WEP),

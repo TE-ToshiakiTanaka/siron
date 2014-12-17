@@ -38,6 +38,8 @@
                 <action android:name="com.sony.ste.siron.AUTO_ROTATE_ON" />
                 <action android:name="com.sony.ste.siron.AUTO_ROTATE_OFF" />
 				<action android:name="com.sony.ste.siron.SET_SCREEN_TIMEOUT" />
+				<!-- action android:name="com.sony.ste.siron.PC_COMPANION_ENABLE" />
+				<action android:name="com.sony.ste.siron.PC_COMPANION_DISABLE" / -->
                 <action android:name="com.sony.ste.siron.DEBUG_ON" />
                 <action android:name="com.sony.ste.siron.WIFI_CONNECT_OPEN" />
 				<action android:name="com.sony.ste.siron.WIFI_CONNECT_WEP" />

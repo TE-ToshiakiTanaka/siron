@@ -8,8 +8,10 @@ import com.sony.ste.siron.wifi.WifiDisConnectRunnable;
 import com.sony.ste.siron.wifi.WifiWPSConnectRunnable;
 import com.sony.ste.siron.settings.DisableAutoRotateRunnable;
 import com.sony.ste.siron.settings.DisableFlightModeRunnable;
+import com.sony.ste.siron.settings.DisablePCCRunnable;
 import com.sony.ste.siron.settings.EnableAutoRotateRunnable;
 import com.sony.ste.siron.settings.EnableFlightModeRunnable;
+import com.sony.ste.siron.settings.EnablePCCRunnable;
 import com.sony.ste.siron.settings.SetScreenTimeoutRunnable;
 
 import android.content.Context;
@@ -75,6 +77,12 @@ public class RunnableFactory implements IRunnableFactory {
                     SetScreenTimeoutRunnable setScreenTimeout = new SetScreenTimeoutRunnable(
                             timeout, mContext.getContentResolver(), intent, actionId);
                     return new LogRunnable(setScreenTimeout, command);
+                case SET_PC_COMPANION_ON_ACTION:
+                	EnablePCCRunnable pccEnable = new EnablePCCRunnable(mContext, intent, actionId);
+                	return new LogRunnable(pccEnable, command);
+                case SET_PC_COMPANION_OFF_ACTION:
+                	DisablePCCRunnable pccDisable = new DisablePCCRunnable(mContext, intent, actionId);
+                	return new LogRunnable(pccDisable, command);
                 case SET_DEBUG_ON_ACTION:
                     SetDebugRunnable setDebug = new SetDebugRunnable(intent, actionId);
                     return new LogRunnable(setDebug, command);
